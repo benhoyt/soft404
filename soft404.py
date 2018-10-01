@@ -40,7 +40,7 @@ def almost_identical(html1, html2, minratio=IDENTICAL_RATIO):
     >>> almost_identical(h1, h2)
     False
     """
-    seq1 = html1.split()  # this is a test comment
+    seq1 = html1.split()
     seq2 = html2.split()
     sm = difflib.SequenceMatcher(None, seq1, seq2)
     return sm.ratio() >= minratio

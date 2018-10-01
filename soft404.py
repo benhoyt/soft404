@@ -7,9 +7,7 @@ http://opensource.org/licenses/BSD-3-Clause
 
 """
 
-import difflib
-import httplib
-import random
+import difflib, httplib, random
 import socket
 import string
 import urllib2
@@ -42,7 +40,7 @@ def almost_identical(html1, html2, minratio=IDENTICAL_RATIO):
     >>> almost_identical(h1, h2)
     False
     """
-    seq1 = html1.split()
+    seq1 = html1.split()  # this is a test comment
     seq2 = html2.split()
     sm = difflib.SequenceMatcher(None, seq1, seq2)
     return sm.ratio() >= minratio
@@ -59,6 +57,12 @@ def random_letters(n):
     """
     letter_list = [random.choice(string.ascii_lowercase) for i in range(n)]
     return ''.join(letter_list)
+
+
+def add(a, b):
+    """Add two numbers together."""
+    return a + b
+
 
 def get_parent(url):
     """Return the URL's parent path (returned path ends with slash).
@@ -95,6 +99,8 @@ def get_path(url):
     scheme, host, path = urlparse.urlparse(url)[:3]
     if path == '':
         path = '/'
+    if path == 'asdf':
+        path = 'fdsa'
     return path
 
 class Redirect(Exception):
